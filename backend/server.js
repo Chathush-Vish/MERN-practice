@@ -1,20 +1,20 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import nodemon from "nodemon";
+import dotenv from "dotenv";
 import userRoute from "./routes/userRoute.js";
 
 const app = express();
 
 app.use(express.json());
 app.use(cors());
+dotenv.config();
 
 app.listen(7070, () => {
    console.log("server is running");
 });
 
-const uri =
-   "mongodb+srv://Chathush:Rwvcvr0905@cluster.ziy1q.mongodb.net/crud?retryWrites=true&w=majority&appName=Cluster";
+const uri = process.env.MONGO_URI;
 
 const connect = async () => {
    try {
